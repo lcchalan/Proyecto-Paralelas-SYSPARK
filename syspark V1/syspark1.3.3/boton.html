@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //variables de configuración
+            var opacidad_inicial = 0.4;
+            var opacidad_final   = 1;
+            var clase_activo = 'boton-activo';
+            var clase_boton = 'boton';
+            
+            
+            //obtenemos los botones
+            var botones = $('.' + clase_boton);
+            //apliamos estilos iniciales
+            botones.css({
+                opacity:opacidad_inicial
+            });
+            //animación al pasar el mouse
+            botones
+                .mouseenter(function(){
+                    $(this).not('.' + clase_activo).stop().animate({
+                        //incluir estilos
+                        opacity:opacidad_final
+                    });
+                })
+                .mouseleave(function(){
+                    $(this).not('.' + clase_activo).stop().animate({
+                        //incluir estilos
+                        opacity:opacidad_inicial
+                    });
+                });
+            //agregar clase activa si se hace click
+            botones.click(function(){
+                botones.not(this).removeClass(clase_activo).trigger('mouseleave');
+                $(this).addClass(clase_activo)
+            });
+        });
+    </script>
+    <style type="text/css">
+    <!--
+        .boton{
+            /* Estilos comunes para TODOS los botones */
+            display:block;
+            float:left;
+            width:200px;
+            height:200px;
+            text-indent:-3333px; /*ocultar el texto*/
+        }
+        /* Estilos para cada boton*/
+        #boton-axe{ background:url(http://www.thescentfactoryonline.com/yahoo_site_admin/assets/images/axe_unlimited.68181717.jpg); }
+        #boton-rexona{ background:url(http://www.informabtl.com/wp-content/uploads/2011/07/Imagen-REXONA-FINAL1.jpg); }
+        #boton-rexona-cd{ background:url(http://babyccinoblog.com/wp-content/uploads/2008/04/rexona2.jpg); }
+        /* estilos para el boton activo */
+        .boton-activo{
+            
+        }
+    -->
+    </style>
+</head>
+<body>
+    <!-- el boton es un link con el texto axe unlimited, el cual ocultamos y ponemos una imagen -->
+    <a class="boton" id="boton-axe" href="#">Axe Unlimited</a>  
+    <a class="boton" id="boton-rexona" href="#">Rexona Men</a>
+    <a class="boton" id="boton-rexona-cd" href="#">Rexona Cotton dry</a>
+</body>
+</html>
