@@ -1,0 +1,13 @@
+#map-canvas{
+		height: 300px;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+}
+
+.vbottom{
+    vertical-align : bottom;
+    bottom: 0;
+    text-decoration: none;
+    float: none;
+}
